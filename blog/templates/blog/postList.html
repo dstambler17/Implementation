@@ -1,0 +1,35 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block title %} Blog Posts{% endblock %}
+
+{% block content %}
+
+{% if entry_list %}
+    <ul>
+    {% for post in entry_list reversed %}
+        <li>
+          <div class="columns">
+          <div class="column subtitle">
+              Title: <a href="{% url 'blog-detail' post.slug %}" >{{ post.title }}</a>
+          </div>
+          <div class="column subtitle">
+              By: <a href="/contributors/{{ post.author.id }}/" >{{ post.author.username }}</a>
+          </div>
+          <div class="column subtitle">
+              Date: <a href="/year/{{ post.date_posted|date:"Y"}}/month/{{ post.date_posted|date:"n" }}" >{{ post.date_posted}}</a>
+          </div>
+          <div class="column subtitle">
+            categories:
+            {% for item in post.catagories.all %}
+            <a href="{% url 'blog-categories' item.slug %}" >{{item.title}}</a>
+              {% endfor %}
+          </div>
+        </div>
+        </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No posts available</p>
+{% endif %}
+{% endblock %}

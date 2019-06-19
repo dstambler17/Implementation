@@ -1,0 +1,22 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% get_media_prefix %}
+
+{% block title %} {{ podcast.title }}{% endblock %}
+
+{% block content %}
+<div class = "text-is-center">{{ podcast.date_posted }}</div>
+<p class = "text-is-center">{{ podcast.author }}</p>
+<br/>
+<p>{{ podcast.description }}</p>
+<!--<a href="{{podcast.audio_file.url }}" target="_blank">
+      hi
+</a>-->
+<center><iframe src="{{podcast.audio_file.url }}" ></iframe></center>
+
+
+
+
+
+
+{% endblock %}

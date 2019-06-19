@@ -1,0 +1,35 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block title %} Episodes{% endblock %}
+
+{% block content %}
+
+{% if entry_list %}
+    <ul>
+    {% for podcast in entry_list reversed %}
+        <li>
+          <div class="columns">
+          <div class="column subtitle">
+              Title: <a href="{% url 'blog-episode' podcast.slug %}" >{{ podcast.title }}</a>
+          </div>
+          <div class="column subtitle">
+              By: <a href="/contributors/{{ podcast.author.id }}/" >{{ podcast.author.username }}</a>
+          </div>
+          <div class="column subtitle">
+              Date: <a href="/year/{{ podcast.date_posted|date:"Y"}}/month/{{ podcast.date_posted|date:"n" }}" >{{ podcast.date_posted}}</a>
+          </div>
+          <div class="column subtitle">
+            categories:
+            {% for item in podcast.catagories.all %}
+            <a href="{% url 'blog-categories' item.slug %}" >{{item.title}}</a>
+              {% endfor %}
+          </div>
+        </div>
+        </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No posts available</p>
+    {% endif %}
+    {% endblock %}

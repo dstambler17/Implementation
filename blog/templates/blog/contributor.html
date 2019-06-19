@@ -1,0 +1,18 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block title %} {{ user.username }}{% endblock %}
+
+{% block content %}
+<ul>
+<h3>Blog Posts</h3>
+{% for post in user.post_set.all %}
+    <li><a href="{% url 'blog-detail' post.slug %}">{{ post.title }}</a></li>
+{% endfor %}
+<br/>
+<h3>Podcast Uploads</h3>
+{% for podcast in user.podcast_set.all %}
+    <li><a href="{% url 'blog-episode' podcast.slug %}">{{ podcast.title }}</a></li>
+{% endfor %}
+</ul>
+{% endblock %}

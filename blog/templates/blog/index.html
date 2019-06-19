@@ -1,0 +1,69 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+
+{% block title %} Recent Entries{% endblock %}
+
+{% block content %}
+
+  {% if posts %}
+  <h3 class='is-green'>Most Recent Posts</h3>
+    <ul>
+      {% for post in posts reversed %}
+        <li>
+        <div class="columns">
+          <div class="column subtitle">
+              Title: <a href="{% url 'blog-detail' post.slug %}" >{{ post.title }}</a>
+          </div>
+          <div class="column subtitle">
+              Author: <a href="{% url 'blog-contributors' post.author.id %}" >{{ post.author.username }}</a>
+          </div>
+          <div class="column  subtitle">
+              Date: <a href="/year/{{ post.date_posted|date:"Y"}}/month/{{ post.date_posted|date:"n" }}" >{{ post.date_posted }}</a>
+          </div>
+          <div class="column subtitle">
+            categories:
+            {% for item in post.catagories.all %}
+            <a href="{% url 'blog-categories' item.slug %}" >{{item.title}}</a>
+              {% endfor %}
+          </div>
+        </div>
+          </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No posts are available.</p>
+  {% endif %}
+
+
+  {% if podcasts %}
+  <h3>Most Recent Podcasts</h3>
+    <ul>
+      {% for podcast in podcasts reversed %}
+        <li>
+        <div class="columns">
+          <div class="column subtitle">
+              Title: <a href="{% url 'blog-episode' podcast.slug %}" >{{ podcast.title }}</a>
+          </div>
+          <div class="column subtitle">
+              Author: <a href="{% url 'blog-contributors' podcast.author.id %}" >{{ podcast.author.username }}</a>
+          </div>
+          <div class="column  subtitle">
+              Date: <a href="/year/{{ podcast.date_posted|date:"Y"}}/month/{{ podcast.date_posted|date:"n" }}" >{{ podcast.date_posted }}</a>
+          </div>
+          <div class="column subtitle">
+            categories:
+            {% for item in podcast.catagories.all %}
+            <a href="{% url 'blog-categories' item.slug %}" >{{item.title}}</a>
+              {% endfor %}
+          </div>
+        </div>
+          </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No posts are available.</p>
+  {% endif %}
+  <br/>
+
+{% endblock %}
