@@ -1,12 +1,21 @@
+<style>
+  .about--container {
+    padding: 2rem;
+    border-radius: 2rem;
+  }
+</style>
 {% extends 'blog/base.html' %}
 {% load static %}
 
 {% block title %} About{% endblock %}
 
 {% block content %}
-  <p>
-    Welcome to the website for implementation. My name is Daniel Stambler and this is the website
-    and blog for my podcast implementation.
-    Click here to check out my <a href="https://dstambler17.github.io/" target ="_blank">personal website</a>
-  <p>
+  <div class="about--container">
+
+    <p class="about">
+      Welcome to the website for implementation. My name is Daniel Stambler and this is the website
+      and blog for my podcast implementation.
+      Click here to check out my <a href="https://dstambler17.github.io/" target ="_blank">personal website</a>
+    <p>
+  </div>
 {% endblock %}

@@ -10,11 +10,22 @@
         <title>Implementation</title>
     {% endif %}
     <link rel="shortcut icon" href="{% static 'blog/images/scribe.png' %}" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
     <link href="{% static 'blog/style.css' %}" rel="stylesheet" type="text/css" />
     <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript" src="{% static 'blog/scripts.js' %}"></script>
+    <style>
+      .main--container {
+        padding: 2rem;
+        min-height: calc(100vh - 4.5rem);
+      }
+      footer {
+        height: auto;
+        padding: 1rem;
+        text-align: center;
+        background-color: rgb(81, 81, 87)!important;
+      }
+    </style>
   </head>
 
    <body>
@@ -32,7 +43,7 @@
          </div>
       </div>
 
-      <div class="navbar-menu ">
+      <div class="navbar-menu">
         <div class="navbar-end">
           <a class="navbar-item" href="{% url 'blog-about' %}">
             About
@@ -43,16 +54,11 @@
           <a class="navbar-item" href="{% url 'blog-post-list'%}">
             Blog Posts
           </a>
-        <!--  {% if user.is_authenticated %}
-            <p class="navbar-item"> Hi {{ user.username }}! </p>
-          {% else %}
-            <a class="navbar-item" href="{% url 'login' %}">login</a>
-          {% endif %} -->
         </div>
       </div>
 
     </nav>
-    <section class = "section section-is-top">
+    <section class = "main--container section section-is-top">
       <br/>
       <br/>
       <div class="columns">
