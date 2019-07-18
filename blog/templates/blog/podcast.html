@@ -12,11 +12,33 @@
 <!--<a href="{{podcast.audio_file.url }}" target="_blank">
       hi
 </a>-->
-<center><iframe src="{{podcast.audio_file.url }}" ></iframe></center>
+<!-- <iframe src="{{podcast.audio_file.url }}" ></iframe> -->
+<div class="audio-holder" src="{{podcast.audio_file.url}}" id="audio">
+      <!-- <source src="{{podcast.audio_file.url}}"> -->
+</div>
 
-
-
-
-
+<script>
+      async function getPodcast(url, audioHolder) {
+            console.log(url)
+            const r = await fetch(url, {'Content-Type': 'audio/mp3'})
+            const soundBody = await r.blob()
+            console.log(soundBody);
+            const audio = new AudioContext()
+                  audio.decodeAudioData(soundBody)
+            const audioElem = new MediaElementAudioSourceNode(audio, {})
+            audioElem.setAttribute("src", url)
+            audioElem.load(audio)
+            // audioElem.
+            document.querySelector("#audio").append(audioElem)
+            audioElem.play()
+      }
+      const exec = async () => {
+            const audioHolder = document.querySelector('#audio')
+            // AudioNode
+            const url = audioHolder.getAttribute("src")
+            await getPodcast(url, audioHolder)
+      }
+      window.onload = () => { setTimeout(exec, 1000) }
+      </script>
 
 {% endblock %}

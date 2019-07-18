@@ -11,6 +11,48 @@ html, body {
   min-height: 100%;
 }
 
+.container {
+  padding: 1rem;
+}
+
+.row {
+  display: inline-flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-around;
+  padding: 1rem;
+}
+.columns {
+  width: 100%;
+  display: block;
+}
+
+@media (max-width: 500px) {
+  .row {
+    display: inline;
+  }
+}
+
+h1 {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-weight: 600;
+}
+
+h3 {
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 500;
+  font-size: 23px;
+}
+
+p {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 18px;
+}
+
+h1.title {
+  padding-left: 2.5rem;
+}
+
 /* end global */
 /* navbar */
 nav {
@@ -34,6 +76,10 @@ nav a {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif!important;
 }
 
+nav a:hover {
+  color: white;
+}
+
 nav a#title {
   color: white;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif!important;
@@ -41,7 +87,7 @@ nav a#title {
   font-weight: 100;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 570px) {
   nav {
     height: 3rem;
     transition: height 500ms;

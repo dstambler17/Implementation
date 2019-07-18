@@ -1,47 +1,44 @@
 {% extends 'blog/base.html' %}
 {% load static %}
+<style>
+</style>
 
-
+<div class="container">
 {% block title %} Recent Entries{% endblock %}
 
 {% block content %}
-
+  <div class="row" style="padding: 1rem;">
   {% if posts %}
+  <div class="columns col-sm-6">
   <h3 class='is-green'>Most Recent Posts</h3>
-    <ul>
-      {% for post in posts reversed %}
-        <li>
-        <div class="columns">
-          <div class="column subtitle">
-              Title: <a href="{% url 'blog-detail' post.slug %}" >{{ post.title }}</a>
-          </div>
-          <div class="column subtitle">
-              Author: <a href="{% url 'blog-contributors' post.author.id %}" >{{ post.author.username }}</a>
-          </div>
-          <div class="column  subtitle">
-              Date: <a href="/year/{{ post.date_posted|date:"Y"}}/month/{{ post.date_posted|date:"n" }}" >{{ post.date_posted }}</a>
-          </div>
-          <div class="column subtitle">
-            categories:
-            {% for item in post.catagories.all %}
-            <a href="{% url 'blog-categories' item.slug %}" >{{item.title}}</a>
-              {% endfor %}
-          </div>
-        </div>
-          </li>
+  {% for post in posts reversed %}
+      <div class="column subtitle">
+          Title: <a href="{% url 'blog-detail' post.slug %}" >{{ post.title }}</a>
+      </div>
+      <div class="column subtitle">
+          Author: <a href="{% url 'blog-contributors' post.author.id %}" >{{ post.author.username }}</a>
+      </div>
+      <div class="column  subtitle">
+          Date: <a href="/year/{{ post.date_posted|date:"Y"}}/month/{{ post.date_posted|date:"n" }}" >{{ post.date_posted }}</a>
+      </div>
+      <div class="column subtitle">
+        categories:
+        {% for item in post.catagories.all %}
+        <a href="{% url 'blog-categories' item.slug %}" >{{item.title}}</a>
+          {% endfor %}
+      </div>
+      <br>
       {% endfor %}
-    </ul>
+    </div>
   {% else %}
     <p>No posts are available.</p>
   {% endif %}
 
 
   {% if podcasts %}
+  <div class="columns col-sm-6">
   <h3>Most Recent Podcasts</h3>
-    <ul>
       {% for podcast in podcasts reversed %}
-        <li>
-        <div class="columns">
           <div class="column subtitle">
               Title: <a href="{% url 'blog-episode' podcast.slug %}" >{{ podcast.title }}</a>
           </div>
@@ -57,13 +54,15 @@
             <a href="{% url 'blog-categories' item.slug %}" >{{item.title}}</a>
               {% endfor %}
           </div>
+          {% endfor %}
         </div>
-          </li>
-      {% endfor %}
-    </ul>
+        <br>
   {% else %}
     <p>No posts are available.</p>
   {% endif %}
+  </div>
   <br/>
-
-{% endblock %}
+  
+  {% endblock %}
+</div>
+  

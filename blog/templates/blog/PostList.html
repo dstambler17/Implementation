@@ -1,15 +1,14 @@
 {% extends 'blog/base.html' %}
 {% load static %}
-
+<div class="container">
 {% block title %} Blog Posts{% endblock %}
 
 {% block content %}
 
 {% if entry_list %}
-    <ul>
+    <div class="row">
     {% for post in entry_list reversed %}
-        <li>
-          <div class="columns">
+        <div class="columns">
           <div class="column subtitle">
               Title: <a href="{% url 'blog-detail' post.slug %}" >{{ post.title }}</a>
           </div>
@@ -26,10 +25,10 @@
               {% endfor %}
           </div>
         </div>
-        </li>
     {% endfor %}
-    </ul>
+    </div>
 {% else %}
     <p>No posts available</p>
 {% endif %}
 {% endblock %}
+</div>
