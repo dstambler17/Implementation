@@ -6,10 +6,11 @@
 {% block content %}
 <div class="row">
     <div class="columns">
-        <div class = "text-is-center">{{ post.date_posted }}</div>
-        <p class = "text-is-center">{{ post.author }}</p>
-        <br/>
-        <p>{{ post.content }}</p>
+        <div class="column subtitle">{{ post.date_posted }}</div>
+        <div class="column subtitle">{{ post.author }}</div>
+        <div class="container">
+            <p>{{ post.content }}</p>
+        </div>
     </div>
 </div>
 

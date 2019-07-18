@@ -1,18 +1,23 @@
 {% extends 'blog/base.html' %}
 {% load static %}
-
+<div class="container">
 {% block title %} {{ category.title }}{% endblock %}
 
 {% block content %}
-<ul>
-<h3>Blog Posts</h3>
-{% for post in category.post_set.all %}
-    <li><a href="{% url 'blog-detail' post.slug %}">{{ post.title }}</a></li>
-{% endfor %}
+<div class="row">
+    <div class="columns">
+    <h3>Blog Posts</h3>
+    {% for post in category.post_set.all %}
+        <p><a href="{% url 'blog-detail' post.slug %}">{{ post.title }}</a></p>
+    {% endfor %}
+    </div>
 <br/>
-<h3>Podcast Uploads</h3>
-{% for podcast in category.podcast_set.all %}
-    <li><a href="{% url 'blog-episode' podcast.slug %}">{{ podcast.title }}</a></li>
-{% endfor %}
-</ul>
+    <div class="columns">
+    <h3>Podcast Uploads</h3>
+    {% for podcast in category.podcast_set.all %}
+        <div><a href="{% url 'blog-episode' podcast.slug %}">{{ podcast.title }}</a></div>
+    {% endfor %}
+    </div>
+</div>
 {% endblock %}
+</div>

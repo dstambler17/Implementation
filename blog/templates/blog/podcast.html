@@ -5,10 +5,11 @@
 {% block title %} {{ podcast.title }}{% endblock %}
 
 {% block content %}
-<div class = "text-is-center">{{ podcast.date_posted }}</div>
-<p class = "text-is-center">{{ podcast.author }}</p>
-<br/>
-<p>{{ podcast.description }}</p>
+<div class = "column subtitle">{{ podcast.date_posted }}</div>
+<div class = "column subtitle">{{ podcast.author }}</div>
+<div class="container">
+      <p>{{ podcast.description }}</p>
+</div>
 <!--<a href="{{podcast.audio_file.url }}" target="_blank">
       hi
 </a>-->

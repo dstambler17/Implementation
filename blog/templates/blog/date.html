@@ -4,17 +4,19 @@
 {% block title %} {% if month %} {{month}} {% endif %} {{year}} {% endblock %}
 
 {% block content %}
-<h3>Blog Posts</h3>
-<ul>
-{% for post in post_list %}
-    <li><a href="{% url 'blog-detail' post.slug %}">{{ post.title }}</a></li>
-{% endfor %}
-</ul>
-<br/>
-<h3>Podcasts</h3>
-<ul>
-{% for podcast in podcast_list %}
-    <li><a href="{% url 'blog-episode' podcast.slug %}">{{ podcast.title }}</a></li>
-{% endfor %}
-</ul>
+<div class="row">
+    <div class="columns">
+        <h3>Blog Posts</h3>
+        {% for post in post_list %}
+            <div><a href="{% url 'blog-detail' post.slug %}">{{ post.title }}</a></div>
+        {% endfor %}
+    </div>
+    <br/>
+    <div class="columns">
+        <h3>Podcasts</h3>
+        {% for podcast in podcast_list %}
+            <div><a href="{% url 'blog-episode' podcast.slug %}">{{ podcast.title }}</a></div>
+        {% endfor %}
+    </div>
+</div>
 {% endblock %}

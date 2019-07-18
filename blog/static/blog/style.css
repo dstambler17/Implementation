@@ -27,6 +27,10 @@ html, body {
   display: block;
 }
 
+.column.subtitle {
+  padding: 0.2rem;
+}
+
 @media (max-width: 500px) {
   .row {
     display: inline;
@@ -87,11 +91,27 @@ nav a#title {
   font-weight: 100;
 }
 
+nav .title {
+  padding-top: 1px;
+}
+
+nav .carrot {
+  display: none;
+  color: white;
+}
+
 @media (max-width: 570px) {
   nav {
     height: 3rem;
-    transition: height 500ms;
+    transition: height 400ms;
     overflow: hidden;
+    cursor: pointer;
+  }
+  nav a#title {
+    margin-right: 1rem;
+  }
+  nav .carrot {
+    display: inline;
   }
   nav:hover {
     height: 10rem!important;
