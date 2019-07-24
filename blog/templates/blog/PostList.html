@@ -7,25 +7,22 @@
 
 {% if entry_list %}
     <div class="row">
+        <div class="columns columns-entry">
     {% for post in entry_list reversed %}
-        <div class="columns">
-          <div class="column subtitle">
-              Title: <a href="{% url 'blog-detail' post.slug %}" >{{ post.title }}</a>
-          </div>
-          <div class="column subtitle">
-              By: <a href="/contributors/{{ post.author.id }}/" >{{ post.author.username }}</a>
-          </div>
-          <div class="column subtitle">
-              Date: <a href="/year/{{ post.date_posted|date:"Y"}}/month/{{ post.date_posted|date:"n" }}" >{{ post.date_posted}}</a>
-          </div>
-          <div class="column subtitle">
-            categories:
-            {% for item in post.catagories.all %}
-            <a href="{% url 'blog-categories' item.slug %}" >{{item.title}}</a>
+        <div class="column subtitle">
+            <div>
+              <h2>
+                <a href="{% url 'blog-detail' post.slug %}" >{{ post.title }}</a>
+              </h2>
+              By: <a href="{% url 'blog-contributors' post.author.id %}" >{{ post.author.username }}</a>
+              {% for item in post.catagories.all %}
+                &nbsp; Categorey: <a href="{% url 'blog-categories' item.slug %}" >{{item.title}}</a>
               {% endfor %}
-          </div>
+            </div>
+            <a href="/year/{{ post.date_posted|date:"Y"}}/month/{{ post.date_posted|date:"n" }}" >{{ post.date_posted }}</a>
         </div>
     {% endfor %}
+        </div>
     </div>
 {% else %}
     <p>No posts available</p>
