@@ -18,7 +18,7 @@ feedparser==5.2.1
 greenlet==0.4.15
 guacamole==0.9.2
 html5lib==0.999999999
-httplib2==0.9.2
+httplib2==0.18.0
 idna==2.6
 ifaddr==0.1.6
 Jinja2==2.10
